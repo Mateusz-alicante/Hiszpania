@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Editor from './Components/Editor/Editor'
+
 class App extends React.Component {
   state = {
     message: "No message yet"
@@ -20,6 +22,7 @@ class App extends React.Component {
       <div>
         <h1> React App </h1>
         <p> {this.state.message} </p>
+        <Editor />
       </div>
     )
   }
