@@ -5,6 +5,7 @@ import ClassicEditor from "@ckeditor/ckeditor5-editor-classic/src/classiceditor"
 import editorConfiguration from './EditorConfig/EditorConfig'
 
 
+
 class Index extends React.Component {
     state = {
         html: ""
@@ -18,6 +19,7 @@ class Index extends React.Component {
                 onChange={(event, editor) => {
                 const data = editor.getData()
                 this.setState({html: data})
+                console.log(Array.from( editor.ui.componentFactory.names() ))
                 }}
                  />
                  <div>
