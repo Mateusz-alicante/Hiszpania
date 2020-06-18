@@ -50,8 +50,6 @@ class Editor extends React.Component {
         axios.post('/api/content/saveArticle', {
             ...data
         }).catch((e) => console.log(e)).then((response) => console.log(response))
-
-        // axios.get('/api/content/test').catch((e) => console.log(e)).then((response) => console.log(response))
     }
 
 
