@@ -1,35 +1,94 @@
 import React from 'react'
+import axios  from 'axios'
 
-import CKEditor from '@ckeditor/ckeditor5-react'
-import ClassicEditor from "@ckeditor/ckeditor5-editor-classic/src/classiceditor";
-import editorConfiguration from './EditorConfig/EditorConfig'
+import { Resizable } from "re-resizable";
+
+import EditorSource from './EditorConfig/EditorSource'
 
 
-
-class Index extends React.Component {
+class Editor extends React.Component {
+    
     state = {
-        html: ""
+        form: {
+            title: "",
+            subtitle: "",
+            bodyHTML: "",
+            imageURL: ""
+        }
     }
+
+    onFormChange = (payload) => {
+        this.setState((oldState) => ({
+            form: {
+                ...oldState.form,
+                ...payload
+            }
+        }))
+        console.log(this.state)
+    }
+
+    submitMainImage = () => {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/api/imageUpload/upload"); 
+        xhr.onload = (event) => { 
+            this.setState((oldState) => ({
+                form: {
+                    ...oldState.form,
+                    imageURL: JSON.parse(event.target.response).url
+                }
+            })); // raw response
+        }; 
+        // or onerror, onabort
+        var formData = new FormData(document.getElementById('mainImageForm')); 
+        xhr.send(formData);
+
+    }
+
+    submitArticle = async () => {
+        console.log("sending request")
+        const data = this.state.form
+        axios.post('/api/content/saveArticle', {
+            ...data
+        }).catch((e) => console.log(e)).then((response) => console.log(response))
+
+        // axios.get('/api/content/test').catch((e) => console.log(e)).then((response) => console.log(response))
+    }
+
+
+
     render() {
-        return (
+        return(
             <div>
-                <CKEditor
-                editor={ClassicEditor}
-                config={editorConfiguration}
-                onChange={(event, editor) => {
-                const data = editor.getData()
-                this.setState({html: data})
-                console.log(Array.from( editor.ui.componentFactory.names() ))
-                }}
-                 />
-                 <div>
-                    <h1>Data from editor</h1>
-                    <div dangerouslySetInnerHTML={{__html: this.state.html}} />
-                 </div>
+                <p>New Article:</p>
+
+                <form>
+                    <input placeholder="Title of the article" type="text" value={this.state.form.title} onChange={(e) => this.onFormChange({title: e.target.value})} />
+                    <input placeholder="subtitle of the article" type="text" value={this.state.form.subtitle} onChange={(e) => this.onFormChange({subtitle: e.target.value})} />
+                </form>
+
+                <form onSubmit={(e) => this.submitMainImage(e)} id="mainImageForm">        
+                    <input type="file" name="upload" onChange={(e) => this.submitMainImage()}  />
+                </form>
+
+                <EditorSource onChange={(bodyHTML) => this.onFormChange({ bodyHTML })} />
+                
+                <Resizable style={{backgroundColor: "gray", marginLeft: "auto", marginRight: "auto"}} 
+                defaultSize={{
+                    width:1000,
+                    height:2000,
+                  }}>
+                    <img src={this.state.form.imageURL} />
+                    <h1>{this.state.form.title}</h1>
+                    <h2>{this.state.form.subtitle}</h2>
+                    <div className="ck-content" dangerouslySetInnerHTML={{__html: this.state.form.bodyHTML}} />
+                </Resizable>
+
+                <button onClick={this.submitArticle}>Submit</button>
             </div>
-            
-          )
+        )
     }
 }
- 
-export default Index
+
+export default Editor
+
+// onChange={() => document.getElementById("mainImageForm").submit()}

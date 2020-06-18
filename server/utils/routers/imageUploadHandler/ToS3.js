@@ -1,7 +1,7 @@
 const AWS = require('aws-sdk');
 
-const ID = "YOUR_ID";
-const SECRET = 'YOUR_SECRET';
+const ID = "Test";
+const SECRET = 'AhyEOlhyKz3sXYJRHpUpXm/Test';
 
 // The name of the bucket that you have created
 const BUCKET_NAME = 'testckeditorupload';
