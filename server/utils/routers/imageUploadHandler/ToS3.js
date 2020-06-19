@@ -1,7 +1,10 @@
 const AWS = require('aws-sdk');
 
-const ID = "Test";
-const SECRET = 'AhyEOlhyKz3sXYJRHpUpXm/Test';
+// const dotenv = require('dotenv');
+// dotenv.config();
+
+const ID = process.env.AWS_ID;
+const SECRET = process.env.AWS_SECRET;
 
 // The name of the bucket that you have created
 const BUCKET_NAME = 'testckeditorupload';
