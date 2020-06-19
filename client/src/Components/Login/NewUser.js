@@ -48,11 +48,22 @@ class NewUser extends React.Component {
             name: this.state.auth.name
         }).catch((e) => this.setState({status: `Error: ${e.response.data}`}))
         
-        if (response.status == 200) {
+
+        if ( response && response.status == 200) {
             this.setState({status: "Successfully created new user!"})
             this.props.dispatch(setAuthToken({ token: response.headers['x-auth-token']}))
         }
     }
+
+    testAuth = () => {
+        console.log(this.props.redux)
+        axios.get('/api/auth/test', {
+            headers: {
+                authorization: this.props.redux.auth.token
+            }
+        }).catch((e) => console.log(e)).then((res) => console.log(res))
+    }
+
 
 
     render() {
@@ -68,9 +79,10 @@ class NewUser extends React.Component {
                     <label>name</label>
                     <input type="text" value={this.state.auth.name} onChange={(e) => this.onNameChange(e.target.value)}/>
 
-                    <button />
+                    <button>Submit</button>
                 </form>
                 <p>{this.state.status}</p>
+                <button onClick={this.testAuth}>Test Auth</button>
             </div>
         )
     }
@@ -78,7 +90,7 @@ class NewUser extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        state
+        redux: state
     }
 }
 

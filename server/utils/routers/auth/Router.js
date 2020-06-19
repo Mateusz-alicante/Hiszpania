@@ -5,10 +5,15 @@ const bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json())
 
-const HandleNewUser = require('../../DB/Actions/HandlenewUser')
+const { nonAdminAuth, AdminAuth } = require('../../DB/Middleware/Auth')
 
-router.post('/login', (req, res) => {
-    console.log(req.body)
+const HandleNewUser = require('../../DB/Actions/Auth/HandlenewUser')
+const HandleLoginUser = require('../../DB/Actions/Auth/HandleLoginUser')
+
+router.post('/login', HandleLoginUser)
+
+router.get('/test', AdminAuth, (req, res) => {
+    res.send("Authenticated!")
 })
 
 router.post('/newUser', HandleNewUser)

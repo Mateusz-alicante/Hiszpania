@@ -25,12 +25,16 @@ const UserSchema = new Schema({
         maxlength: 255
       },
       //give different access rights if admin or not 
-      isAdmin: Boolean
+      isAdmin: {
+        type: Boolean,
+        default: false,
+        required: true
+      }
 });
 
-UserSchema.methods.generateAuthToken = () => { 
-    const token = jwt.sign({ _id: this._id, isAdmin: this.isAdmin }, process.env.DB_KEY); //get the private key from the config file -> environment variable
-    return token;
+UserSchema.methods.generateAuthToken = function() { 
+  const token = jwt.sign({ _id: this._id, isAdmin: this.isAdmin }, process.env.DB_KEY); //get the private key from the config file -> environment variable
+  return token;
 }
 
 const User = mongoose.model('User', UserSchema);

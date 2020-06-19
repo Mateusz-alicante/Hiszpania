@@ -1,18 +1,22 @@
 import React from 'react'
 import axios from 'axios'
 
-export default class Login extends React.Component {
+import { setAuthToken } from '../Utils/Redux/Actions/Auth'
+import { connect } from 'react-redux'
+
+class Login extends React.Component {
     state = {
         auth: {
-            login: "",
+            email: "",
             password: ""
-        }
+        },
+        status: ""
     }
 
     onLoginChange = (value) => this.setState((oldState) => ({
         auth: {
             ...oldState.auth,
-            login: value
+            email: value
         }
     }))
 
@@ -23,29 +27,44 @@ export default class Login extends React.Component {
         }
     }))
 
-    onFormSubmit = (e) => {
+    onFormSubmit = async (e) => {
         e.preventDefault()
         
-        axios.post('/api/auth/login', {
-            login: this.state.auth.login,
+        const response = await axios.post('/api/auth/login', {
+            email: this.state.auth.email,
             password: this.state.auth.password
-        }).catch((e) => console.log(e))
+        }).catch((e) => this.setState({status: `Error: ${e.response.data}`}))
+
+        if ( response && response.status == 200) {
+            this.setState({status: "Successfully created new user!"})
+            this.props.dispatch(setAuthToken({ token: response.headers['x-auth-token']}))
+        }
     }
 
+    
 
     render() {
         return (
             <div>
                 <form onSubmit={(e) => this.onFormSubmit(e)}>
-                    <label>login</label>
-                    <input type="text" value={this.state.auth.login} onChange={(e) => this.onLoginChange(e.target.value)}/>
+                    <label>email</label>
+                    <input type="text" value={this.state.auth.email} onChange={(e) => this.onLoginChange(e.target.value)}/>
                     
                     <label>password</label>
                     <input type="password" value={this.state.auth.password} onChange={(e) => this.onPasswordChange(e.target.value)}/>
 
-                    <button />
+                    <button>Submit</button>
                 </form>
+                <p>{this.state.status}</p>
             </div>
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        redux: state
+    }
+}
+
+export default connect(mapStateToProps)(Login)

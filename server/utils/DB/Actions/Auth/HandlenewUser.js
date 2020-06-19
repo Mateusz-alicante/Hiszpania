@@ -1,21 +1,20 @@
-const { User, validate } = require('../Schemas/User')
+const { User, validate } = require('../../Schemas/User')
 const bcrypt = require('bcrypt')
 
 const HandleNewUser = async (req, res) => {
-    console.log(req.body)
     // validate the request body first
     const { error } = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
     //find an existing user
     let user = await User.findOne({ email: req.body.email });
-    console.log(user)
     if (user) return res.status(400).send("User already registered.");
 
     user = new User({
         name: req.body.name,
         password: req.body.password,
-        email: req.body.email
+        email: req.body.email,
+        isAdmin: false
     });
     user.password = await bcrypt.hash(user.password, 10);
     await user.save();
