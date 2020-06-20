@@ -3,14 +3,15 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 import styles from './Header.module.css'
+import image from './logo.png'
 
 const Header = () => (
-    <div>
-        <h1 className={styles.title}>Biznes w Hiszpanii</h1>
+    <div className={styles.Header}>
+        <img className={styles.logo} src={image} />
         <div className={styles.NavContainer}>
-            <NavLink className={styles.NavLink} to="/" >Home</NavLink>
-            <NavLink className={styles.NavLink} to="/new" >New Article</NavLink>
-            <NavLink className={styles.NavLink} to="/login" >Login</NavLink>
+            <NavLink activeClassName={styles.NavLinkActive} className={styles.NavLink} exact to="/" >Home</NavLink>
+            <NavLink activeClassName={styles.NavLinkActive} className={styles.NavLink} to="/new" exact >New Article</NavLink>
+            <NavLink activeClassName={styles.NavLinkActive} className={styles.NavLink} to="/login" exact >Login</NavLink>
         </div>
     </div>
 )
