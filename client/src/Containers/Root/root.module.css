@@ -1,0 +1,12 @@
+.root{
+    background-color: #E27D60;
+    height: 100%;
+}
+
+.container {
+    margin-right: 15%;
+    margin-left: 15%;
+    padding: 7%;
+    padding-top: 3%;
+    background-color: wheat;
+}

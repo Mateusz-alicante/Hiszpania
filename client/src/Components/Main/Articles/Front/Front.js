@@ -9,7 +9,8 @@ import Article from './SimpleArticle'
 class Front extends React.Component {
     state = {
         loadedArticles: [],
-        cycle: 0
+        cycle: 0,
+        hasMore: true
     }
 
     loadArticles = async () => {
@@ -23,6 +24,10 @@ class Front extends React.Component {
         console.log(this.state.cycle)
 
         this.setState((state) => ({cycle: state.cycle + 1}))
+
+        if (response.data.length < 10) {
+            this.setState({hasMore: false})
+        }
 
         console.log(response)
         this.setState((state) => ({
