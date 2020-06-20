@@ -4,36 +4,36 @@ import CKEditor from '@ckeditor/ckeditor5-react'
 import ClassicEditor from "@ckeditor/ckeditor5-editor-classic/src/classiceditor";
 import editorConfiguration from './EditorConfig'
 
+import { connect } from 'react-redux'
 
 
-const style = {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    border: "solid 1px #ddd",
-    background: "#f0f0f0"
-  };
-  
+class EditorSource extends React.Component {
+  state = {
+    editorConfig: undefined
+  }
 
-const EditorSource = (props) => (
-            <div>
-                <CKEditor
-                editor={ClassicEditor}
-                config={editorConfiguration}
-                onChange={(event, editor) => props.onChange(editor.getData())}
-                 />
+  componentWillMount() {
+    this.setState({editorConfig: editorConfiguration(this.props.redux.auth.token)})
+  }
+  render() {
 
-            </div>
-            
-)
-// <div>
-// <h1>Data from editor</h1>
-// <Resizable style={style}>
+    return (
+      <div>
+        <CKEditor
+          editor={ClassicEditor}
+          config={this.state.editorConfig}
+          onChange={(event, editor) => this.props.onChange(editor.getData())}
+        />
 
-//     <div className="ck-content" dangerouslySetInnerHTML={{__html: this.state.html}} />
-// </Resizable>
-    
+      </div>
+    )
+  }
+}
 
-// </div>
- 
-export default EditorSource
+const mapStateToProps = (state) => {
+  return {
+    redux: state
+  }
+}
+
+export default connect(mapStateToProps)(EditorSource)

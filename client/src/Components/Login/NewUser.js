@@ -4,6 +4,8 @@ import axios from 'axios'
 import { setAuthToken } from '../Utils/Redux/Actions/Auth'
 import { connect } from 'react-redux'
 
+import { Link } from 'react-router-dom'
+
 class NewUser extends React.Component {
     state = {
         auth: {
@@ -83,6 +85,7 @@ class NewUser extends React.Component {
                 </form>
                 <p>{this.state.status}</p>
                 <button onClick={this.testAuth}>Test Auth</button>
+                <Link to="/login">Login</Link>
             </div>
         )
     }

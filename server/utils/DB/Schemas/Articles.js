@@ -1,29 +1,39 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var blogSchema = new Schema({
+var ArticleSchema = new Schema({
   title:  {
       type: String,
-      required: true
+      required: true,
+      minlength: 3
   },
   subtitle: {
     type: String,
-    required: true
+    required: true,
+    minlength: 3
 },
   author: {
     type: String,
-    required: true
+    required: true,
+    minlength: 3
 },
   body:   {
     type: String,
-    required: true
+    required: true,
+    minlength: 3
 },
   image: {
     type: String,
     required: true
 },
-  tags: [String]
+  tags: [String],
+  createdAt: {
+    type: Date,
+    default: Date.now()
+  }
   
 });
 
-module.exports = blogSchema
+const Article = mongoose.model('Article', ArticleSchema);
+
+module.exports = Article

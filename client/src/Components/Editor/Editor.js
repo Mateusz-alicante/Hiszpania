@@ -14,7 +14,8 @@ class Editor extends React.Component {
             subtitle: "",
             bodyHTML: "",
             imageURL: ""
-        }
+        },
+        status: undefined
     }
 
     onFormChange = (payload) => {
@@ -49,7 +50,7 @@ class Editor extends React.Component {
         const data = this.state.form
         axios.post('/api/content/saveArticle', {
             ...data
-        }).catch((e) => console.log(e)).then((response) => console.log(response))
+        }).catch((e) => this.setState({status: e.response.data})).then((response) => console.log(response))
     }
 
 
@@ -82,6 +83,8 @@ class Editor extends React.Component {
                 </Resizable>
 
                 <button onClick={this.submitArticle}>Submit</button>
+
+                <p>{this.state.status}</p>
             </div>
         )
     }

@@ -12,6 +12,7 @@ router.use(fileUpload())
 // define the home page route
 router.post('/upload', async (req, res) => {
     const url = await toS3(req.files.upload)
+    console.log(req.headers)
     res.json({
       url
     })
