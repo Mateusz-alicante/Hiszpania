@@ -8,5 +8,11 @@
 }
 
 .NavLink {
+    color: blue;
+    text-decoration: none;
     padding: 3%;
+}
+
+.NavLink:hover {
+    color: green;
 }
