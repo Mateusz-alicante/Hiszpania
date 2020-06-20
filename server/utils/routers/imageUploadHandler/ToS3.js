@@ -15,7 +15,6 @@ const s3 = new AWS.S3({
 });
 
 const UploadToS3 = async (file) => {
-    console.log(file)
 
     // Setting up S3 upload parameters
     const params = {

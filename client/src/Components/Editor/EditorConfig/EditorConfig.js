@@ -208,7 +208,6 @@ const editorConfiguration = function(token) {
   
       // Headers sent along with the XMLHttpRequest to the upload server.
       headers: {
-          'X-CSRF-TOKEN': 'CSFR-Token',
           Authorization: token
       }
   },
@@ -290,7 +289,6 @@ const editorConfiguration = function(token) {
   },
   language: "pl",
   };
-  console.log(config)
   return config
 }
 

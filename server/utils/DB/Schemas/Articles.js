@@ -26,11 +26,15 @@ var ArticleSchema = new Schema({
     type: String,
     required: true
 },
+  imageDescription: {
+    type: String,
+    default: ""
+  },
   tags: [String],
   createdAt: {
     type: Date,
     default: Date.now()
-  }
+  },
   
 });
 

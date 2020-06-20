@@ -1,14 +1,10 @@
 const defaultState = {
-    count: 0
+    text: "",
+    sortBy: "date",
 }
 
 export default (state = defaultState, action) => {
     switch(action.type) {
-
-        case "ADD":
-            return {
-                count: state.count + 1
-            }
 
         default:
             return state
