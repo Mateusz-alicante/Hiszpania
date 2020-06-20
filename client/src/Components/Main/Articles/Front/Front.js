@@ -53,6 +53,7 @@ class Front extends React.Component {
                 >
                 {this.state.loadedArticles.map((article) => (
                     <Article
+                    key={article._id}
                     image={article.image} 
                     imageDescription={article.imageDescription}
                     title={article.title}

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import styles from './SimpleArticle.module.css'
+
 const SimpleArticle = ({
     image,
     imageDescription,
@@ -7,13 +9,18 @@ const SimpleArticle = ({
     id,
     subtitle
 }) => (
-    <div>
-        <p>Article:</p>
-        <img src={image} style={{ height: '10%'}} />
-        <p>{imageDescription}</p>
-        <p>{title}</p>
-        <p>{subtitle}</p>
-    </div>
-)
+        <div className={styles.container}>
+            <div className={styles.imageContainer}>
+                <img src={image} className={styles.image} />
+                <p className={styles.imageDescription}>{imageDescription}</p>
+            </div>
+            <div className={styles.gridContainer}>
+                <h1 className={styles.title}>{title}</h1>
+                
+                <p className={styles.subtitle}>{subtitle}</p>
+            </div>
+
+        </div>
+    )
 
 export default SimpleArticle

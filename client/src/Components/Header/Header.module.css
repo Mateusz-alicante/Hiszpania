@@ -17,6 +17,7 @@
     top: -1px;
     background-color: whitesmoke;
     padding: 2%;
+    z-index: 1000;
 }
 
 .NavLink {
