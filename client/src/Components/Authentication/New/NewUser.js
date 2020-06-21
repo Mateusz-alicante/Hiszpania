@@ -1,10 +1,13 @@
 import React from 'react'
 import axios from 'axios'
 
-import setAuthInfo from '../Utils/Redux/Actions/Auth'
+import setAuthInfo from '../../Utils/Redux/Actions/Auth'
 import { connect } from 'react-redux'
 
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
+import { toast } from 'react-toastify';
+
+import style from './NewUser.module.css'
 
 class NewUser extends React.Component {
     state = {
@@ -13,7 +16,8 @@ class NewUser extends React.Component {
             password: "",
             name: ""
         },
-        status: undefined
+        status: undefined,
+        redirect: false
     }
 
     componentDidMount() {
@@ -48,32 +52,32 @@ class NewUser extends React.Component {
             email: this.state.auth.email,
             password: this.state.auth.password,
             name: this.state.auth.name
-        }).catch((e) => this.setState({status: `Error: ${e.response.data}`}))
+        }).catch((e) => toast.error(`Nieprawidłowe dane, oto szczegóły błędu: ${e.response.data}`))
         
 
         if ( response && response.status == 200) {
             this.setState({status: "Successfully created new user!"})
             this.props.dispatch(setAuthInfo({ token: response.headers['x-auth-token']}))
+            this.CreateAccountSuccessful()
+
         }
-
-        console.log(response)
     }
 
-    testAuth = () => {
-        console.log(this.props.redux)
-        axios.get('/api/auth/test', {
-            headers: {
-                authorization: this.props.redux.auth.token
-            }
-        }).catch((e) => console.log(e)).then((res) => console.log(res))
-    }
 
+
+    CreateAccountSuccessful = () => {
+        toast.success("Pomyślnie stworzono nowe konto!, przekierowano Cię do pulpitu nawigacyjnego konta", {
+            autoClose: 6000,
+        })
+        this.setState({ redirect: '/user' })
+    }
 
 
     render() {
         return (
-            <div>
-                <form onSubmit={(e) => this.onFormSubmit(e)}>
+            <div className={style.container}>
+                <h1 className={style.title}>Stwórz nowe konto:</h1>
+                <form className={style.form} onSubmit={(e) => this.onFormSubmit(e)}>
                     <label>email</label>
                     <input type="text" value={this.state.auth.email} onChange={(e) => this.onLoginChange(e.target.value)}/>
                     
@@ -83,11 +87,15 @@ class NewUser extends React.Component {
                     <label>name</label>
                     <input type="text" value={this.state.auth.name} onChange={(e) => this.onNameChange(e.target.value)}/>
 
-                    <button>Submit</button>
+                    <div className={style.buttonContainer}>
+                        <button>Prześlij</button>
+                    </div>
                 </form>
-                <p>{this.state.status}</p>
-                <button onClick={this.testAuth}>Test Auth</button>
+                
+                
                 <Link to="/user">Login</Link>
+
+                {this.state.redirect && <Redirect to={this.state.redirect} />}
             </div>
         )
     }
