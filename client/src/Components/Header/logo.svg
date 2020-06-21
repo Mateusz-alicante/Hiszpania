@@ -1,1 +1,16 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg width="100%" height="100%" viewBox="0 0 2469 782" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"><rect id="Artboard1" x="0" y="0" width="2468.75" height="781.25" style="fill:none;"/><circle cx="2117.4" cy="348.438" r="348.438" style="fill:#ffb500;"/><text x="20.757px" y="539.862px" style="font-family:'FreestyleScript-Regular', 'Freestyle Script', cursive;font-size:651.449px;fill:#ff002b;">B<tspan x="251.482px 319.49px 432.586px 565.328px 706.886px 838.117px 967.082px 1162.04px 1291px 1528.03px 1596.03px 1727.27px 1840.36px 1976.38px 2109.88px 2242.62px 2310.63px " y="539.862px 539.862px 539.862px 539.862px 539.862px 539.862px 539.862px 539.862px 539.862px 539.862px 539.862px 539.862px 539.862px 539.862px 539.862px 539.862px 539.862px ">iznes w Hiszpanii</tspan></text><path d="M325.215,718.75c0,0 211.611,-196.025 930.475,-53.125c718.863,142.9 779.103,113.417 1157.03,68.75" style="fill:none;stroke:#ff1d00;stroke-width:14.79px;"/></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 792 255" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g id="Artboard1" transform="matrix(0.99,0,0,0.425,0,0)">
+        <rect x="0" y="0" width="800" height="600" style="fill:none;"/>
+        <g transform="matrix(1.0101,0,0,2.35294,108.081,-204.706)">
+            <circle cx="572.5" cy="202.5" r="111.5" style="fill:rgb(255,181,0);"/>
+        </g>
+        <g transform="matrix(1.342,0,0,3.94777,-101.384,-278.911)">
+            <text x="82px" y="176px" style="font-family:'FreestyleScript-Regular', 'Freestyle Script', cursive;font-size:124.248px;fill:rgb(255,0,43);">Biznes w Hiszpanii</text>
+        </g>
+        <g transform="matrix(1.30765,0,0,2.35294,-167.536,-341.176)">
+            <path d="M210,379C210,379 262.307,316.272 440,362C617.693,407.728 632.583,398.293 726,384" style="fill:none;stroke:rgb(255,29,0);stroke-width:4.09px;"/>
+        </g>
+    </g>
+</svg>
