@@ -13,3 +13,15 @@
 .singleContainer {
     margin: 5%;
 }
+
+@media only screen 
+  and (max-device-width: 700px) {
+
+    .articleContainer {
+        display: inline;
+    }
+    
+    .singleContainer {
+        margin: 5%;
+    }
+}

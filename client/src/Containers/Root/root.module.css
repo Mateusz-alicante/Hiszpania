@@ -15,3 +15,24 @@
     min-height: 90%;
     border-radius: 20px;
 }
+
+@media only screen 
+  and (max-device-width: 1000px) {
+
+    .root{
+        background-color: transparent;
+        padding-top: 0;
+    }
+    
+    .container {
+        margin-right: 0;
+        margin-left: 0;
+        padding: 0;
+        padding-bottom: 3%;
+        padding-top: 3%;
+        background-color: whitesmoke;
+        min-height: 100%;
+        border-radius: 0;
+    }
+
+}
