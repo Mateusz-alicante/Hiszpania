@@ -9,9 +9,15 @@
     margin-top: 5%;
 }
 
+.link {
+    text-emphasis: none;
+    text-decoration: none;
+    color: black;
+}
+
 .title {
-    padding: 3%;
-    font-stretch: expanded
+    padding: 2%;
+    font-stretch: expanded;
 }
 
 .imageDescription {

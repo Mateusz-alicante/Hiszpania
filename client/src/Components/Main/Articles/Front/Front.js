@@ -3,6 +3,7 @@ import axios from 'axios'
 
 import { connect } from 'react-redux'
 import Loader from 'react-infinite-scroll-component'
+import Spinner from '../../../../Containers/Reusable/Spinner/Spinner'
 
 import Article from './SimpleArticle'
 
@@ -50,10 +51,12 @@ class Front extends React.Component {
                 dataLength={this.state.loadedArticles.length}
                 next={this.loadArticles}
                 hasMore={true}
+                loader={<Spinner />}
                 >
                 {this.state.loadedArticles.map((article) => (
                     <Article
                     key={article._id}
+                    id={article._id}
                     image={article.image} 
                     imageDescription={article.imageDescription}
                     title={article.title}
