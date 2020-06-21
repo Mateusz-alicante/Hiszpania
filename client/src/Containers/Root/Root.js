@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Router from '../../Components/Router/Router'
+import Router from '../../Components/Routers/MainRouter/Router'
 import styles from './root.module.css'
 
 const Root = () => (

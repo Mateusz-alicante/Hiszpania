@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 
-import { setAuthToken } from '../Utils/Redux/Actions/Auth'
+import setAuthInfo from '../Utils/Redux/Actions/Auth'
 import { connect } from 'react-redux'
 
 import { Link } from 'react-router-dom'
@@ -39,8 +39,10 @@ class Login extends React.Component {
 
         if ( response && response.status == 200) {
             this.setState({status: "Successfully created new user!"})
-            this.props.dispatch(setAuthToken({ token: response.headers['x-auth-token']}))
+            this.props.dispatch(setAuthInfo({ token: response.headers['x-auth-token'], ...response.data}))
         }
+
+        console.log(response)
     }
 
     
@@ -58,7 +60,7 @@ class Login extends React.Component {
                     <button>Submit</button>
                 </form>
                 <p>{this.state.status}</p>
-                <Link to="/login/new">Create new account</Link>
+                <Link to="/user/new">Create new account</Link>
             </div>
         )
     }

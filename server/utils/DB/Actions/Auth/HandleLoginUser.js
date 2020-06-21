@@ -12,9 +12,9 @@ const HandleLoginUser = async (req, res) => {
 
     const token = user.generateAuthToken();
     res.header("x-auth-token", token).send({
-        _id: user._id,
         name: user.name,
-        email: user.email
+        email: user.email,
+        isAdmin: user.isAdmin
     });
 }
 

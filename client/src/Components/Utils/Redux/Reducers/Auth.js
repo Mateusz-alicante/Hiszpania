@@ -1,13 +1,22 @@
 const defaultState = {
-    token: ""
+    token: "",
+    isAdmin: "",
+    name: "",
+    email: "",
+    isLoggedIn: false
+    
 }
 
 export default (state = defaultState, action) => {
     switch (action.type) {
-        case "SET_AUTH_TOKEN":
+        case "SET_AUTH_INFO":
             return {
                 ...state,
-                token: action.token
+                token: action.token,
+                isAdmin: action.isAdmin,
+                name: action.name,
+                email: action.email,
+                isLoggedIn: action.token.length > 3
             }
 
         default:
