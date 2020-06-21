@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 import Loader from 'react-infinite-scroll-component'
 import Spinner from '../../../../Containers/Reusable/Spinner/Spinner'
 
+import styles from './Front.module.css'
+
 import Article from './SimpleArticle'
 
 class Front extends React.Component {
@@ -48,11 +50,12 @@ class Front extends React.Component {
         return(
             <div>
                 <Loader
-                dataLength={this.state.loadedArticles.length}
+                dataLength={this.state.loadedArticles.length / 2}
                 next={this.loadArticles}
-                hasMore={true}
+                hasMore={this.state.hasMore}
                 loader={<Spinner />}
                 >
+                <div className={styles.articleContainer}>
                 {this.state.loadedArticles.map((article) => (
                     <Article
                     key={article._id}
@@ -60,8 +63,10 @@ class Front extends React.Component {
                     image={article.image} 
                     imageDescription={article.imageDescription}
                     title={article.title}
-                    subtitle={article.subtitle}/>
+                    subtitle={article.subtitle}
+                    className={styles.singleContainer}/>
                 ))}
+                </div>
                 </Loader>
             </div>
         )

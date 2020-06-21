@@ -1,14 +1,17 @@
 .root{
     background-color: #d10011;
     height: 100%;
+    padding-top: 3%;
+    padding-bottom: 3%;
 }
 
 .container {
     margin-right: 15%;
     margin-left: 15%;
     padding: 7%;
-    padding-bottom: 0;
+    padding-bottom: 3%;
     padding-top: 3%;
     background-color: whitesmoke;
     min-height: 90%;
+    border-radius: 20px;
 }
