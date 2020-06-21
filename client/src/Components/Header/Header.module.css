@@ -14,7 +14,7 @@
 .NavContainer {
     position: absolute;
     text-align: left;
-    position: sticky;
+    position: sticky !important;
     top: -1px;
     background-color: whitesmoke;
     padding: 2%;
