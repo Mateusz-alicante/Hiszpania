@@ -71,7 +71,7 @@ class Editor extends React.Component {
                 </form>
 
                 <form onSubmit={(e) => this.submitMainImage(e)} id="mainImageForm">
-                    <input type="file" name="upload" onChange={(e) => this.submitMainImage()} />
+                    <input type="file" accept="image/*" name="upload" onChange={(e) => this.submitMainImage()} />
                     <input type="text" placeholder="Description of the image" value={this.state.form.imageDescription} onChange={(e) => this.onFormChange({ imageDescription: e.target.value })} />
                 </form>
 

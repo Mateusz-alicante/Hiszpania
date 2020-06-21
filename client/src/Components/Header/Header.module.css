@@ -7,14 +7,13 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 100%;
-    display: block;
+    width: 50%;
 }
 
 .NavContainer {
     position: absolute;
     text-align: left;
-    position: sticky !important;
+    position: sticky;
     top: -1px;
     background-color: whitesmoke;
     padding: 2%;
@@ -35,8 +34,8 @@
 }
 
 .Header {
-    margin-top: 0;
     padding-bottom: 2%;
+    display: inline;
 }
 
 .NavLinkActive {
