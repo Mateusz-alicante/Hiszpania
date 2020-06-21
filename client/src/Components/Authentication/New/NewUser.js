@@ -16,8 +16,7 @@ class NewUser extends React.Component {
             password: "",
             name: ""
         },
-        status: undefined,
-        redirect: false
+        status: undefined
     }
 
     componentDidMount() {
@@ -69,7 +68,7 @@ class NewUser extends React.Component {
         toast.success("Pomyślnie stworzono nowe konto!, przekierowano Cię do pulpitu nawigacyjnego konta", {
             autoClose: 6000,
         })
-        this.setState({ redirect: '/user' })
+        this.props.history.push('/user')
     }
 
 
@@ -94,8 +93,6 @@ class NewUser extends React.Component {
                 
                 
                 <Link to="/user">Login</Link>
-
-                {this.state.redirect && <Redirect to={this.state.redirect} />}
             </div>
         )
     }

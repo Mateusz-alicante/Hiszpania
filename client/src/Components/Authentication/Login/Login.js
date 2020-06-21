@@ -16,8 +16,7 @@ class Login extends React.Component {
             email: "",
             password: ""
         },
-        status: "",
-        redirect: false
+        status: ""
     }
 
     onLoginChange = (value) => this.setState((oldState) => ({
@@ -47,14 +46,13 @@ class Login extends React.Component {
             this.loginSuccessful()
         }
 
-        console.log(response)
     }
 
     loginSuccessful = () => {
         toast.success("Pomyślnie zalogowałeś się na konto!, przekierowano Cię do pulpitu nawigacyjnego konta", {
             autoClose: 6000,
         })
-        this.setState({ redirect: '/user' })
+        this.props.history.push('/user')
     }
 
 
@@ -74,7 +72,7 @@ class Login extends React.Component {
                     </div>
                 </form>
                 <Link to="/user/new">Create new account</Link>
-                {this.state.redirect && <Redirect to={this.state.redirect} />}
+                
             </div>
         )
     }
