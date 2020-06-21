@@ -41,3 +41,20 @@
 .NavLinkActive {
     border-bottom: 5px solid red;
 }
+
+.userIcon {
+    background-color: whitesmoke;
+    position: relative;
+    height: 2em;
+    float: right;
+}
+
+.imageLink {
+    float: right;
+    padding-right: 2em;
+}
+
+.imageLink:hover {
+    color: green;
+    border-bottom: 3px solid salmon;
+}

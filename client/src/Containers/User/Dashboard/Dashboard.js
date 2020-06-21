@@ -4,7 +4,10 @@ import { connect } from 'react-redux'
 
 const Dashboard = (props) => (
     <div>
-        <p>This is my dashboard</p>
+        <div>
+        
+        
+        </div>
     </div>
 )
 
