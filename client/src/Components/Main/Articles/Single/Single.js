@@ -29,6 +29,7 @@ class Single extends React.Component {
         })
         .catch((e) => console.log(e))
 
+        console.log(response)
         this.setState((state) => ({
             ...state,
             articleInfo: {
