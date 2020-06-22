@@ -51,10 +51,19 @@
 
 .imageLink {
     float: right;
-    padding-right: 2em;
+    margin-right: 2em;
 }
 
 .imageLink:hover {
     color: green;
     border-bottom: 3px solid salmon;
+}
+
+@media only screen 
+  and (max-device-width: 700px) {
+    
+    .imageLink {
+        display: none
+    }
+    
 }
