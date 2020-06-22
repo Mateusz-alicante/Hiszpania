@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 527 525" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g id="_1" serif:id="1" transform="matrix(0.65875,0,0,0.875,0,0)">
+        <rect x="0" y="0" width="800" height="600" style="fill:none;"/>
+        <g transform="matrix(1.51803,0,0,1.14286,-1.51803,-142.857)">
+            <path d="M515,262.25C515,193.123 458.877,137 389.75,137L139.25,137C70.123,137 14,193.123 14,262.25L14,512.75C14,581.877 70.123,638 139.25,638L389.75,638C458.877,638 515,581.877 515,512.75L515,262.25Z" style="fill:none;stroke:rgb(255,0,10);stroke-width:5.91px;"/>
+        </g>
+        <g transform="matrix(1.51803,0,0,1.14286,-10.6262,-626.286)">
+            <path d="M431.084,912C418.239,941.418 388.879,962 354.75,962L188.25,962C142.303,962 105,924.697 105,878.75L105,712.25C105,666.303 142.303,629 188.25,629L354.75,629C392.261,629 424.011,653.863 434.407,688L407.125,688C394.911,665.864 371.344,650.86 344.301,650.86L200.902,650.86C161.33,650.86 129.202,682.987 129.202,722.559L129.202,866.441C129.202,906.013 161.33,938.14 200.902,938.14L344.301,938.14C366.576,938.14 386.492,927.96 399.649,912L431.084,912Z" style="fill:rgb(255,0,10);"/>
+        </g>
+        <g transform="matrix(1,0,0,1,109.298,18.2972)">
+            <g transform="matrix(1.04049,0,0,1.85935,107.536,-121.777)">
+                <rect x="133" y="198" width="299" height="38" style="fill:rgb(255,0,10);"/>
+            </g>
+            <g transform="matrix(0.000479642,1.85935,-1.43367,0.000622058,971.15,-585.865)">
+                <path d="M466.5,238L504,289L429,289L466.5,238Z" style="fill:rgb(255,0,10);"/>
+            </g>
+        </g>
+    </g>
+</svg>

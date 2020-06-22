@@ -24,8 +24,6 @@ class Front extends React.Component {
             }
         })
 
-        console.log(this.state.cycle)
-
         this.setState((state) => ({cycle: state.cycle + 1}))
 
         if (response.data.length < 10) {
@@ -44,6 +42,10 @@ class Front extends React.Component {
 
     componentDidMount() {
         this.loadArticles()
+    }
+
+    componentWillMount() {
+        this.setState({ loadArticles: [], cycle: 0, hasMore: true})
     }
 
     render() {

@@ -76,6 +76,7 @@ class NewUser extends React.Component {
         return (
             <div className={style.container}>
                 <h1 className={style.title}>Stwórz nowe konto:</h1>
+                <Link to="/user"><p className={style.link} >Możesz również zalogować się na istniejące konto</p></Link>
                 <form className={style.form} onSubmit={(e) => this.onFormSubmit(e)}>
                     <label>email</label>
                     <input type="text" value={this.state.auth.email} onChange={(e) => this.onLoginChange(e.target.value)}/>
@@ -90,9 +91,6 @@ class NewUser extends React.Component {
                         <button>Prześlij</button>
                     </div>
                 </form>
-                
-                
-                <Link to="/user">Login</Link>
             </div>
         )
     }
