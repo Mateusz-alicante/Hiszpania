@@ -50,7 +50,7 @@ class Front extends React.Component {
 
     render() {
         return(
-            <div>
+            <div>  
                 <Loader
                 dataLength={this.state.loadedArticles.length / 2}
                 next={this.loadArticles}

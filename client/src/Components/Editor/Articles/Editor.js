@@ -2,14 +2,14 @@ import React from 'react'
 import axios from 'axios'
 
 
-import EditorSource from './EditorConfig/EditorSource'
+import EditorSource from '../../../Containers/Reusable/EditorConfig/EditorSource'
 import { connect } from 'react-redux'
 
 import styles from './Editor.module.css'
 import { toast } from 'react-toastify';
 
-import FileUpload from '../../Containers/Reusable/FileUpload/FileUpload'
-import ArticlePreview from '../Main/Articles/Single/Single'
+import FileUpload from '../../../Containers/Reusable/FileUpload/FileUpload'
+import ArticlePreview from '../../Main/Articles/Single/Single'
 
 class Editor extends React.Component {
 
