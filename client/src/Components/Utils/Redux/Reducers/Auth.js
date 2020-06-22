@@ -19,6 +19,16 @@ export default (state = defaultState, action) => {
                 isLoggedIn: action.token.length > 3
             }
 
+        case "LOG_OUT":
+            return {
+                token: "",
+                isAdmin: "",
+                name: "",
+                email: "",
+                isLoggedIn: false
+                
+            }
+
         default:
             return state
     }

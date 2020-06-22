@@ -19,8 +19,9 @@ class Single extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props.match.params.id)
-        this.fetchArticle()
+        if (this.props.load !== 'fromProps') {
+            this.fetchArticle()
+        }
     }
 
     fetchArticle = async () => {
@@ -39,7 +40,12 @@ class Single extends React.Component {
     }
 
     render() {
-        const article = this.state.articleInfo
+        let article = {}
+        if (this.props.load === 'fromProps') {
+            article = this.props.data
+        } else {
+            article = this.state.articleInfo
+        } 
         return (
             <div className={styles.mainContainer}>
                 <div className={styles.imageContainer} >

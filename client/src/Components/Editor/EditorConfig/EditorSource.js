@@ -7,6 +7,7 @@ import editorConfiguration from './EditorConfig'
 import { connect } from 'react-redux'
 
 
+
 class EditorSource extends React.Component {
   state = {
     editorConfig: undefined

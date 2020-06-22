@@ -1,0 +1,59 @@
+@keyframes spin {
+    from {
+        transform:rotate(360deg);
+    }
+    to {
+        transform:rotate(0deg);
+    }
+}
+
+.fileInput {
+    display: none;
+}
+
+.fileLabel {
+    display: inline-flex;
+    color: white;
+    background-color: darkorange;
+    height: 3em;
+    width: 40%;
+    justify-content: center;
+    align-items: center;
+    font-size: 150%;
+    font-family: 'Monstserrat', sans-serif;
+    margin: 5%;
+    margin-left: 0;
+}
+
+.fileLabel:hover {
+    background-color: rgb(255, 173, 73);
+}
+
+#photoIcon {
+    margin-right: 5%;
+    size: 5em;
+}
+
+.fileInputContainer {
+    display: inline-block;
+    width: 100%;
+    white-space: nowrap;
+}
+
+#lodingStatusIndicator {
+    animation-name: spin;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear; 
+    font-size: 300%;
+}
+
+#doneStatusIndicator {
+    font-size: 300%;
+    color: green;
+}  
+#errorStatusIndicator {
+    font-size: 300%;
+    color: red;
+}
+

@@ -11,7 +11,6 @@ const Header = () => (
         <img className={styles.logo} src={image} />
         <div className={styles.NavContainer}>
             <NavLink activeClassName={styles.NavLinkActive} className={styles.NavLink} exact to="/" >Home</NavLink>
-            <NavLink activeClassName={styles.NavLinkActive} className={styles.NavLink} to="/new" exact >New Article</NavLink>
             <NavLink activeClassName={styles.NavLinkActive} className={styles.imageLink} to="/user" ><img className={styles.userIcon} src={userIcon} /></NavLink>
         </div>
     </div>

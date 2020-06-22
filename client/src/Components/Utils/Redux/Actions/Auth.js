@@ -6,4 +6,8 @@ const setAuthInfo = ({ token, isAdmin, name, email }) => ({
     email
 })
 
+export const logout = () => ({
+    type: "LOG_OUT"
+})
+
 export default setAuthInfo

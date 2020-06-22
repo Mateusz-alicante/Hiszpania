@@ -15,7 +15,10 @@ const saveAtricle = async (req, res) => {
 
         await article.save()
 
-        return res.status(201).send("Article has been saved correctly")
+        return res.status(201).send({
+            message: "Article has been saved correctly",
+            id: article.id
+        })
     
     } catch (error) {
         console.log(error)
