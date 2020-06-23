@@ -1,7 +1,7 @@
 const Article = require('../../Schemas/Articles')
 
 const saveAtricle = async (req, res) => {
-    const { title, subtitle, bodyHTML: body, imageURL: image, imageDescription } = req.body
+    const { title, subtitle, bodyHTML: body, imageURL: image, imageDescription, location } = req.body
 
     try {
         const article = new Article({
