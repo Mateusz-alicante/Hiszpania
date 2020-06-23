@@ -3,7 +3,6 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom'
 
 import Login from '../../Authentication/Login/Login'
 import CreateUser from '../../Authentication/New/NewUser'
-// import Dashboard from '../../../Containers/User/Dashboard/Dashboard'
 import Redirect from './Redirection'
 
 import Spinner from '../../../Containers/Reusable/Spinner/Spinner'
@@ -22,6 +21,13 @@ const CreateArticle = () => (
     </Suspense>
 )
 
+const CreateFairComponent = React.lazy(() => import('../../Editor/Fairs/Editor'))
+const CreateFair = () => (
+    <Suspense fallback={<Spinner />} >
+        <CreateFairComponent />
+    </Suspense>
+)
+
 
 const Router = (props) => (
     <div>
@@ -30,6 +36,7 @@ const Router = (props) => (
         <Route path="/user/new" exact component={CreateUser} />
         <Route path="/user/dashboard" exact component={Dashboard} />
         <Route path="/user/newArticle" exact component={CreateArticle} />
+        <Route path="/user/newFair" exact component={CreateFair} />
     </div>
 )
 

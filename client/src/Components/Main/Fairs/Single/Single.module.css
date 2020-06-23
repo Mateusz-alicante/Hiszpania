@@ -1,0 +1,57 @@
+
+.mainContainer {
+    margin-top: 5%;
+}
+
+.image {
+    width: 100%;
+}
+
+.imageContainer {
+    position: relative;
+}
+
+.imageDescription {
+    padding: 1%;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(150, 150, 150, 0.7);
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+
+}
+
+.title {
+    font-size: 5em;
+    padding: 5%;
+}
+
+.subTitle {
+    font-size: 2em;
+    padding: 5%;
+}
+
+.bodyContainer {
+    background-color: white;
+    padding: 5%;
+    padding-bottom: 5%;
+}
+
+.dates {
+    margin-top: 2em;
+    margin-bottom: 3em;
+}
+
+.dateLabelSpan {
+    display: inline-block;
+    width: 100%;
+    color: rgb(102, 102, 102);
+    margin-top: 3em;
+    font-size: 1em;
+}
+
+.dateSpan {
+    font-size: 2em;
+}

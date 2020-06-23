@@ -10,7 +10,8 @@ const Header = () => (
     <div className={styles.Header}>
         <img className={styles.logo} src={image} />
         <div className={styles.NavContainer}>
-            <NavLink activeClassName={styles.NavLinkActive} className={styles.NavLink} exact to="/" >Home</NavLink>
+            <NavLink activeClassName={styles.NavLinkActive} className={styles.NavLink} exact to="/" >Artykuły</NavLink>
+            <NavLink activeClassName={styles.NavLinkActive} className={styles.NavLink} exact to="/fairs" >Targi</NavLink>
             <NavLink activeClassName={styles.NavLinkActive} className={styles.imageLink} to="/user" ><img className={styles.userIcon} src={userIcon} /></NavLink>
         </div>
     </div>

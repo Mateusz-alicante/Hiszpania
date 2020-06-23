@@ -49,7 +49,7 @@ class Editor extends React.Component {
             toast.error(`Wystąpił błąd podczas przesyłania artykułu. ${e.response.data} `)
         })
         
-        if (response.status === 201) {
+        if (response && response.status === 201) {
             toast.success("Artykuł został domyślnie przesłany, zostałeś przeniesiony do strony artykułu")
             this.props.history.push(`/articles/${response.data.id}`)
         }
@@ -107,5 +107,3 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps)(Editor)
-
-// onChange={() => document.getElementById("mainImageForm").submit()}
