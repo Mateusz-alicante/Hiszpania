@@ -17,7 +17,7 @@ class Front extends React.Component {
     render() {
         return (
             <div>
-                <Filters />
+                <Filters label="targi" />
                 <Loader
                     type="fairs"
                     url="/api/content/loadFairs"

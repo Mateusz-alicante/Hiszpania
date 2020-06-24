@@ -6,8 +6,8 @@ const loadFairs = async (req, res) => {
     const cycle = req.header('cycle')
 
     const filters = JSON.parse(req.header('filters'))
-    filters.startDate && (query['startDate'] = {"$gte": new Date(filters.startDate), "$lt": new Date(filters.endDate)})
-    filters.endDate && (query['endDate'] = {"$gte": new Date(filters.startDate), "$lt": new Date(filters.endDate)})
+    filters.startDate && (query['startDate'] = {"$gte": new Date(filters.startDate), "$lte": new Date(filters.endDate)})
+    filters.endDate && (query['endDate'] = {"$gte": new Date(filters.startDate), "$lte": new Date(filters.endDate)})
 
     const fairs = await Fair.find(query)
     .limit(10)

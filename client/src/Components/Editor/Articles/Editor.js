@@ -4,6 +4,7 @@ import axios from 'axios'
 
 import EditorSource from '../../../Containers/Reusable/EditorConfig/EditorSource'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 import styles from './Editor.module.css'
 import { toast } from 'react-toastify';
@@ -106,4 +107,4 @@ const mapStateToProps = (state) => ({
     redux: state
 })
 
-export default connect(mapStateToProps)(Editor)
+export default connect(mapStateToProps)(withRouter(Editor))

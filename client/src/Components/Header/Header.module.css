@@ -10,30 +10,6 @@
     width: 50%;
 }
 
-.NavContainer {
-    position: absolute;
-    text-align: left;
-    position: sticky;
-    top: -1px;
-    background-color: whitesmoke;
-    padding: 2%;
-    z-index: 1000;
-    white-space: nowrap;
-    vertical-align: top;
-    display: inline-block;
-    width: 100%;
-}
-.customLinks {
-    display: inline-block;
-    white-space: nowrap;
-    overflow: auto;
-    overflow-y: hidden;
-    max-width: 60%;
-    padding: 2%;
-    vertical-align: top;
-    padding-top: 0;
-}
-
 .NavLink {
     color: black;
     text-decoration: none;
@@ -42,6 +18,69 @@
     padding-top: 2px;
     vertical-align: top;
 }
+
+.NavContainer {
+    position: absolute;
+    text-align: left;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: whitesmoke;
+
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.NavContainer > div {
+    display: inline-block;
+}
+
+.overflowNav {
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 90%;
+    
+}
+
+.NavLink {
+    display: inline-block;
+    margin-bottom: 1em;
+}
+
+.iconcontainer {
+    float: right;
+}
+
+.imageLink {
+    width: 2em;
+    display: inline-block;
+    margin-top: 1.5em;
+}
+
+
+
+.overflowNav::-webkit-scrollbar { 
+    height: 0.5em;
+    color: red;
+} 
+
+.overflowNav::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #d10011; 
+    
+}
+.overflowNav > div {
+    display: inline-block;
+}
+
+
+
+
+
+
 
 .NavLink:hover {
     color: green;
@@ -57,17 +96,7 @@
     border-bottom: 5px solid red;
 }
 
-.userIcon {
-    background-color: whitesmoke;
-    position: relative;
-    height: 2em;
-    float: right;
-}
 
-.imageLink {
-    float: right;
-    margin-right: 2em;
-}
 
 .imageLink:hover {
     color: green;

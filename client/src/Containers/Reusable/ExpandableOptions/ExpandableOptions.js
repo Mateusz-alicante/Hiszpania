@@ -42,7 +42,7 @@ class ExpandableOptions extends React.Component {
     render() {
         return (
             <div>
-                <button onClick={this.toggleOpenFilters}>Filtruj targi</button>
+                <button className={styles.expandButton} onClick={this.toggleOpenFilters}>Filtruj {this.props.label}</button>
                 <Expand open={this.state.filtersIsOpen}>
                     <div>
                         <h3>Sortuj według daty:</h3>

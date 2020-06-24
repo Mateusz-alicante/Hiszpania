@@ -8,7 +8,15 @@ class Page extends React.Component {
 
     state = {
         pageTitle: "",
-        pageBody: ""
+        pageBody: "",
+        pageURL: this.props.match.params.url
+    }
+
+    componentDidUpdate() {
+        if (this.state.pageURL != this.props.match.params.url) {
+            this.setState({pageURL: this.props.match.params.url})
+            this.fetchPage()
+        }
     }
 
     componentDidMount() {
@@ -19,6 +27,7 @@ class Page extends React.Component {
         const response = await Axios.get('/api/content/loadPage/' + this.props.match.params.url)
         .catch((e) => toast.error(`Wystąpił błąd podczas ładowania artykułu. ${e} `))
         
+        console.log(response)
         if (response.status == 200) {
             const data = response.data
             this.setState({
@@ -34,7 +43,7 @@ class Page extends React.Component {
             <div className={styles.container}>
                 <h2 className={styles.title}>{this.state.pageTitle}</h2>
                 <div className={styles.article}>
-                    <div className="ck-content" dangerouslySetInnerHTML={{__html: this.state.pageBody}} />
+                    <div className="ck-content" dangerouslySetInnerHTML={{ __html: this.state.pageBody}} />
                 </div>
             </div>
         )

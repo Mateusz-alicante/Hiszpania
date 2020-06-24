@@ -48,7 +48,7 @@ class Editor extends React.Component {
 
                 <div className={styles.preview}>
                     <h2>{this.state.pageTitle}</h2>
-                    <div dangerouslySetInnerHTML={{ __html: this.state.pageBody}} />
+                    <div className="ck-content" dangerouslySetInnerHTML={{ __html: this.state.pageBody}} />
                 </div>
 
                 <button disabled={this.state.status === "loading"} onClick={this.submitPage} className={styles.submitButton}>Prześlij</button>
