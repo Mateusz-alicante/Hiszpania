@@ -12,13 +12,14 @@ class Front extends React.Component {
     state = {
         loadedArticles: [],
         cycle: 0,
-        hasMore: true
+        hasMore: true,
+        filters: this.props.redux.FairFilters
     }
 
     loadArticles = async () => {
         const response = await axios.get(this.props.url, {
             headers: {
-                filters: this.props.redux.ArticleFilters,
+                filters: JSON.stringify(this.state.filters),
                 cycle: this.state.cycle
             }
         })
@@ -46,6 +47,15 @@ class Front extends React.Component {
     componentWillMount() {
         this.setState({ loadArticles: [], cycle: 0, hasMore: true})
     }
+
+    async componentDidUpdate() {
+        if (this.props.redux.FairFilters != this.state.filters) {
+            await this.setState({filters: this.props.redux.FairFilters})
+            await this.setState({loadedArticles: [], cycle: 0, hasMore: true})
+            this.loadArticles()
+        }
+    }
+
 
     render() {
         return(

@@ -28,6 +28,13 @@ const CreateFair = () => (
     </Suspense>
 )
 
+const PagesRouter = React.lazy(() => import('../../../Containers/User/Pages/Router/PagesRouter.js'))
+const Pages = () => (
+    <Suspense fallback={<Spinner />} >
+        <PagesRouter />
+    </Suspense>
+)
+
 
 const Router = (props) => (
     <div>
@@ -37,6 +44,7 @@ const Router = (props) => (
         <Route path="/user/dashboard" exact component={Dashboard} />
         <Route path="/user/newArticle" exact component={CreateArticle} />
         <Route path="/user/newFair" exact component={CreateFair} />
+        <Route path="/user/pages" component={Pages} />
     </div>
 )
 

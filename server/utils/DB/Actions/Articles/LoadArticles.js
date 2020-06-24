@@ -1,5 +1,7 @@
 const Article = require('../../Schemas/Articles')
 
+const testVar = "test"
+
 const loadArticles = async (req, res) => {
     const cycle = req.header('cycle')
     const articles = await Article.find({})

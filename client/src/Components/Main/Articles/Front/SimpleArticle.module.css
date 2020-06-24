@@ -1,13 +1,13 @@
 .image {
     width: 100%;
-    border-radius: 3%;
+    border-radius: 2em;
     object-fit: cover;
     height:25em;
 }
 
 .container {
     border: 2px solid lightgray;
-    border-radius: 3%;
+    border-radius: 2em;
     margin: 5%;
 }
 

@@ -14,12 +14,12 @@ import styles from './Editor.module.css'
 import { toast } from 'react-toastify';
 
 import FileUpload from '../../../Containers/Reusable/FileUpload/FileUpload'
-import ArticlePreview from '../../Main/Articles/Single/Single'
-
- 
+import FairPreview from '../../Main/Fairs/Single/Single'
 
 
-moment.locale('pl'); 
+
+
+moment.locale('pl');
 
 class Editor extends React.Component {
 
@@ -68,7 +68,7 @@ class Editor extends React.Component {
 
         if (response && response.status === 201) {
             toast.success("Artykuł został domyślnie przesłany, zostałeś przeniesiony do strony artykułu")
-            this.props.history.push(`/articles/${response.data.id}`)
+            this.props.history.push(`/fairs/${response.data.id}`)
         }
     }
 
@@ -94,6 +94,7 @@ class Editor extends React.Component {
 
 
     render() {
+        const formData = this.state.form
         return (
             <div>
                 <h1 className={styles.topTitle}>Nowy artykuł:</h1>
@@ -101,33 +102,33 @@ class Editor extends React.Component {
 
                 <form className={styles.form1}>
                     <label>Nazwa targów</label>
-                    <input placeholder="Tytuł targów" type="text" value={this.state.form.title} onChange={(e) => this.onFormChange({ title: e.target.value })} />
+                    <input placeholder="Tytuł targów" type="text" value={formData.title} onChange={(e) => this.onFormChange({ title: e.target.value })} />
                     <label>Opis targów</label>
-                    <textarea placeholder="Opis targów" value={this.state.form.subtitle} onChange={(e) => this.onFormChange({ subtitle: e.target.value })} />
+                    <textarea placeholder="Opis targów" value={formData.subtitle} onChange={(e) => this.onFormChange({ subtitle: e.target.value })} />
                     <label>Kategoria targów</label>
-                    <input placeholder="Kategoria targów" type="text" value={this.state.form.category} onChange={(e) => this.onFormChange({ category: e.target.value })} />
+                    <input placeholder="Kategoria targów" type="text" value={formData.category} onChange={(e) => this.onFormChange({ category: e.target.value })} />
 
                     <div>
-                    <label>Wybierz date rozpoczęcia i zakończenia targów:</label>
-                    <DateRangePicker
-                        startDate={this.state.form.startDate}
-                        endDate={this.state.form.endDate}
-                        startDateId="your_unique_start_date_id" 
-                        endDateId="your_unique_end_date_id" 
-                        onDatesChange={this.handleDateChange} // PropTypes.func.isRequired,
-                        focusedInput={this.state.dateSelectorFocused}
-                        onFocusChange={focusedInput => this.setState({ dateSelectorFocused: focusedInput })}
-                        isOutsideRange={() => false}
-                    />
-                    <label>Wybierz położenie targów:</label>
-                    <input placeholder="Położenie targów" type="text" value={this.state.form.location} onChange={(e) => this.onFormChange({ location: e.target.value })} />
+                        <label>Wybierz date rozpoczęcia i zakończenia targów:</label>
+                        <DateRangePicker
+                            startDate={formData.startDate}
+                            endDate={formData.endDate}
+                            startDateId="your_unique_start_date_id"
+                            endDateId="your_unique_end_date_id"
+                            onDatesChange={this.handleDateChange} // PropTypes.func.isRequired,
+                            focusedInput={this.state.dateSelectorFocused}
+                            onFocusChange={focusedInput => this.setState({ dateSelectorFocused: focusedInput })}
+                            isOutsideRange={() => false}
+                        />
+                        <label>Wybierz położenie targów:</label>
+                        <input placeholder="Położenie targów" type="text" value={formData.location} onChange={(e) => this.onFormChange({ location: e.target.value })} />
                     </div>
 
                 </form>
                 <label className={styles.fileUploadLabel}>Wybierz obraz:</label>
                 <FileUpload url="/api/imageUpload/upload" handleImageUploaded={this.handleImageUploaded} />
                 <label className={styles.fileUploadLabel}>Opis obrazu:</label>
-                <input className={styles.fileUploadDescription} type="text" placeholder="Description of the image" value={this.state.form.imageDescription} onChange={(e) => this.onFormChange({ imageDescription: e.target.value })} />
+                <input className={styles.fileUploadDescription} type="text" placeholder="Description of the image" value={formData.imageDescription} onChange={(e) => this.onFormChange({ imageDescription: e.target.value })} />
 
                 <EditorSource className={styles.editor} onChange={(bodyHTML) => this.onFormChange({ bodyHTML })} />
 
@@ -135,12 +136,16 @@ class Editor extends React.Component {
 
                 <div className={styles.previewContainer}>
                     <h1 className={styles.previewContainerTitle}>Preview:</h1>
-                    <ArticlePreview load="fromProps" key={this.state.form.title} data={{
-                        title: this.state.form.title,
-                        subtitle: this.state.form.subtitle,
-                        image: this.state.form.imageURL,
-                        imageDescription: this.state.form.imageDescription,
-                        body: this.state.form.bodyHTML
+                    <FairPreview load="fromProps" key={formData.title} data={{
+                        title: formData.title,
+                        subtitle: formData.subtitle,
+                        image: formData.imageURL,
+                        imageDescription: formData.imageDescription,
+                        body: formData.bodyHTML,
+                        location: formData.location,
+                        startDate: formData.startDate,
+                        endDate: formData.endDate,
+                        category: formData.category
                     }} />
                 </div>
 

@@ -1,13 +1,19 @@
 const Fair = require('../../Schemas/Fairs')
 
+
 const loadFairs = async (req, res) => {
+    let query = {}
     const cycle = req.header('cycle')
-    const fairs = await Fair.find({})
+
+    const filters = JSON.parse(req.header('filters'))
+    filters.startDate && (query['startDate'] = {"$gte": new Date(filters.startDate), "$lt": new Date(filters.endDate)})
+    filters.endDate && (query['endDate'] = {"$gte": new Date(filters.startDate), "$lt": new Date(filters.endDate)})
+
+    const fairs = await Fair.find(query)
     .limit(10)
     .skip(cycle * 10)
     .select("-body -__v")
     .sort({createdAt: -1})
-    
     
 
     res.send(fairs)

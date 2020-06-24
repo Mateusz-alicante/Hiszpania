@@ -7,6 +7,7 @@ import SingleArticle from '../../Main/Articles/Single/Single'
 
 import FrontPageFairs from '../../Main/Fairs/Front/Front'
 import SingleFair from '../../Main/Fairs/Single/Single'
+import Page from '../../../Containers/User/Pages/SinglePage/Page'
 
 import UserRouter from '../UserRouter/UserRouter'
 
@@ -23,7 +24,9 @@ const Router = (props) => (
             <Route path="/fairs" exact component={FrontPageFairs} />
             <Route path="/fairs/:id" component={SingleFair} />
             
-            <Route path="/user" exact={false} component={UserRouter} />
+            <Route path="/user" component={UserRouter} />
+
+            <Route path="/customPage/:url" component={Page} />
         </Switch>
         <ToastContainer />
     </BrowserRouter>

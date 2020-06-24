@@ -18,6 +18,20 @@
     background-color: whitesmoke;
     padding: 2%;
     z-index: 1000;
+    white-space: nowrap;
+    vertical-align: top;
+    display: inline-block;
+    width: 100%;
+}
+.customLinks {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: auto;
+    overflow-y: hidden;
+    max-width: 60%;
+    padding: 2%;
+    vertical-align: top;
+    padding-top: 0;
 }
 
 .NavLink {
@@ -26,6 +40,7 @@
     margin: 3%;
     padding: 1%;
     padding-top: 2px;
+    vertical-align: top;
 }
 
 .NavLink:hover {
@@ -69,6 +84,11 @@
     .Header {
         padding-bottom: 5%;
         display: inline;
+    }
+
+    .NavContainer {
+        padding-top: 2em;
+        padding-bottom: 2em;
     }
 
 }
