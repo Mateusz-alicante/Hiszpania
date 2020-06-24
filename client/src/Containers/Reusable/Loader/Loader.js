@@ -56,6 +56,10 @@ class Front extends React.Component {
         }
     }
 
+    componentWillUnmount() {
+        this.setState({loadedArticles: [], cycle: 0, hasMore: true})
+    }
+
 
     render() {
         return(

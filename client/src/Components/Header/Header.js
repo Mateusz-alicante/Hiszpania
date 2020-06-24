@@ -35,7 +35,7 @@ class Header extends React.Component {
 
 
                         {this.state.customLinks.map((link) => (
-                            <NavLink activeClassName={styles.NavLinkActive} className={styles.NavLink} exact to={"/customPage/" + link.url} >{link.title}</NavLink>)
+                            <NavLink key={link.url} activeClassName={styles.NavLinkActive} className={styles.NavLink} exact to={"/customPage/" + link.url} >{link.title}</NavLink>)
                         )}
                     </div>
 

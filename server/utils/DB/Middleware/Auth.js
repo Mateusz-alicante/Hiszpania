@@ -29,8 +29,6 @@ const AdminAuth = (req, res, next) => {
     //if can verify the token, set req.user and pass to next middleware
     const decoded = jwt.verify(token, process.env.DB_KEY);
     req.user = decoded;
-    console.log("decoded:")
-    console.log(decoded)
     if (decoded.isAdmin == false) return res.status(401).send("Token does not provide Admin privilages");
     next();
   } catch (ex) {

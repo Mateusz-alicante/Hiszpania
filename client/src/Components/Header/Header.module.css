@@ -47,6 +47,7 @@
 .NavLink {
     display: inline-block;
     margin-bottom: 1em;
+    font-size: 200%;
 }
 
 .iconcontainer {

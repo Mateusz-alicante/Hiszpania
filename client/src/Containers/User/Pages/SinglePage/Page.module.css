@@ -1,5 +1,7 @@
 .container {
     margin-top: 10%;
+    min-height: 100%;
+    margin-bottom: 20em;
 }
 
 .title {

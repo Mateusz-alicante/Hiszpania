@@ -15,8 +15,17 @@ const LoadPage = async (req, res) => {
     res.send(page)
 }
 
+const getAllPages = async (req, res) => {
+    console.log('got request on route')
+    const pages = await Page.find({})
+    .sort({createdAt: -1})
+
+    res.send(pages)
+}
+
 
 module.exports = {
     getPagesUrls,
-    LoadPage
+    LoadPage,
+    getAllPages
 }

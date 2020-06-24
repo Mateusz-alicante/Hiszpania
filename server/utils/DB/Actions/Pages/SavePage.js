@@ -23,11 +23,37 @@ const savePage = async (req, res) => {
         })
     
     } catch (error) {
-        console.log(error)
         return res.status(422).send("Article data is does not pass the validation.      " + error)
         
     }
 
 }
 
-module.exports = savePage
+const deletePage = async (req, res) => {
+    const { id } = req.params
+
+    try {
+
+        const page = await Page.deleteOne({_id: id})
+
+        if (page.n == 1) {
+            return res.status(200).send({
+                message: "Page has been removed correctely",
+            })
+        } else {
+            res.status(404).send({
+                message: "This page was not found refresh the page and try again"
+            })
+        }
+
+        
+    
+    } catch (error) {
+        console.log(error)
+        return res.status(422).send("An error occured while trying to delete the page.      " + error)
+        
+    }
+
+}
+
+module.exports = {savePage, deletePage}

@@ -1,6 +1,7 @@
 const { User, validate } = require('../../Schemas/User')
 const bcrypt = require('bcrypt')
 
+
 const HandleNewUser = async (req, res) => {
     // validate the request body first
     const { error } = validate(req.body);

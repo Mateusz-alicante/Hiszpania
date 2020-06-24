@@ -13,6 +13,8 @@ const authRouter = require('./utils/routers/auth/Router')
 // DB connection
 require('./utils/DB/MongooseInit')
 
+app.set('trust proxy', 1);
+
 app.use(express.static(path.join(__dirname, '/../client/build')));
 
 app.use('/api/content', contentRouter)
