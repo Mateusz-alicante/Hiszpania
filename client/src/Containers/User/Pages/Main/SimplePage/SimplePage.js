@@ -9,12 +9,15 @@ import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import axios from 'axios'
 import { connect } from 'react-redux'
 
+import { withRouter } from 'react-router-dom'
+import { toast } from 'react-toastify'
+
 class SimplePage extends React.Component {
 
     alertDelete = () => {
         confirmAlert({
             title: 'Czy na pewno chcesz wykasować stronę?',
-            message: `Po konfirmacjii strona pod tytułem ${this.props.page.title} zostanie zkasowana.`,
+            message: `Po konfirmacjii strona pod tytułem ${this.props.page.title} zostanie skasowana.`,
             buttons: [
                 {
                     label: 'Tak',
@@ -33,10 +36,19 @@ class SimplePage extends React.Component {
             headers: {
                 authorization: this.props.redux.auth.token
             }
+        }).catch((e) => {
+            toast.error(`Wystąpił błąd podczas kasowania strony. ${e.response.data} `)
         })
-        console.log(response.data)
+        
+        if (response && response.status == 200) {
+            toast.success(`Strona została domyślnie skasowana`)
+            this.props.rerender()
+        }
+      
+    }
 
-        this.props.rerender()
+    editArticle = () => {
+        this.props.history.push('/user/pages/edit/' + this.props.page.url)
     }
 
     render() {
@@ -45,7 +57,7 @@ class SimplePage extends React.Component {
             <div className={styles.container}>
 
                 <div className={styles.buttonContianer}>
-                    <button className={styles.editButton}>edytuj</button>
+                    <button className={styles.editButton} onClick={this.editArticle}>edytuj</button>
                     <button className={styles.deleteButton} onClick={this.alertDelete}>kasuj</button>
                 </div>
 
@@ -64,4 +76,4 @@ const mapStateToProps = (state) => ({
     redux: state
 })
 
-export default connect(mapStateToProps)(SimplePage)
+export default connect(mapStateToProps)(withRouter(SimplePage))

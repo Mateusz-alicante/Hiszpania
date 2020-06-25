@@ -28,7 +28,7 @@ class Dashboard extends React.Component {
         return (
             <div className={styles.container} >
                 <div className={styles.grid} >
-                    {isAdmin && <img onClick={() => this.redirectTo('/user/newArticle')} src={newArticle} />}
+                    {isAdmin && <img onClick={() => this.redirectTo('/user/newArticle/new')} src={newArticle} />}
                     {isAdmin && <img src={list} onClick={() => this.redirectTo('/user/newFair')} />}
                     {isAdmin && <img src={social} onClick={() => this.redirectTo('/user/pages')} />}
                     <img src={me} />

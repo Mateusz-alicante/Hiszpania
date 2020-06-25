@@ -10,7 +10,8 @@ import { connect } from 'react-redux'
 
 class EditorSource extends React.Component {
   state = {
-    editorConfig: undefined
+    editorConfig: undefined,
+    data: this.props.data
   }
 
   componentWillMount() {
@@ -24,6 +25,7 @@ class EditorSource extends React.Component {
           editor={ClassicEditor}
           config={this.state.editorConfig}
           onChange={(event, editor) => this.props.onChange(editor.getData())}
+          data={this.props.data}
         />
 
       </div>

@@ -7,7 +7,6 @@ import { toast } from 'react-toastify'
 
 import styles from './Pages.module.css'
 import SimplePage from './SimplePage/SimplePage'
-import { relativeTimeThreshold } from 'moment'
 
 class Pages extends React.Component {
 

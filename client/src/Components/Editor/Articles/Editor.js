@@ -26,6 +26,32 @@ class Editor extends React.Component {
         imageStatus: undefined
     }
 
+    componentDidMount() {
+        if (this.props.match.params.action != 'new') {
+            this.fetchArticleData()
+        }
+    }
+
+    fetchArticleData = async (id) => {
+        const response = await axios.get('/api/content/loadSingleArticle?id=' + this.props.match.params.action)
+            .catch((e) => toast.error(`Wystąpił błąd podczas ładowania strony. ${e} `))
+
+
+        if (response.status == 200) {
+            const data = response.data
+
+            this.setState({
+                form: {
+                    title: data.title,
+                    subtitle: data.subtitle,
+                    bodyHTML: data.body,
+                    imageURL: data.image,
+                    imageDescription: data.imageDescription
+                }
+            })
+        }
+    }
+
     onFormChange = (payload) => {
         this.setState((oldState) => ({
             form: {
@@ -36,24 +62,47 @@ class Editor extends React.Component {
     }
 
     submitArticle = async () => {
-        this.setState({status: 'loading'})
+        this.setState({ status: 'loading' })
         const data = this.state.form
-        const response = await axios.post('/api/content/saveArticle', {
-            ...data,
-        }, {
-            headers: {
-                authorization: this.props.redux.auth.token
+
+        if (this.props.match.params.action == 'new') {
+
+            const response = await axios.post('/api/content/saveArticle', {
+                ...data,
+            }, {
+                headers: {
+                    authorization: this.props.redux.auth.token
+                }
+            })
+                .catch((e) => {
+                    this.setState({ status: `Error: ${e.response.data}` })
+                    toast.error(`Wystąpił błąd podczas przesyłania artykułu. ${e.response.data} `)
+                })
+
+            if (response && response.status === 201) {
+                toast.success("Artykuł został domyślnie przesłany, zostałeś przeniesiony do strony artykułu")
+                this.props.history.push(`/articles/${response.data.id}`)
             }
-        })
-        .catch((e) => {
-            this.setState({ status: `Error: ${e.response.data}` })
-            toast.error(`Wystąpił błąd podczas przesyłania artykułu. ${e.response.data} `)
-        })
-        
-        if (response && response.status === 201) {
-            toast.success("Artykuł został domyślnie przesłany, zostałeś przeniesiony do strony artykułu")
-            this.props.history.push(`/articles/${response.data.id}`)
+        } else {
+            const response = await axios.post('/api/content/updateArticle', {
+                ...data,
+                id: this.props.match.params.action
+            }, {
+                headers: {
+                    authorization: this.props.redux.auth.token
+                }
+            })
+                .catch((e) => {
+                    this.setState({ status: `Error: ${e.response.data}` })
+                    toast.error(`Wystąpił błąd podczas przesyłania artykułu. ${e.response.data} `)
+                })
+
+            if (response && response.status === 201) {
+                toast.success("Strona została domyślnie przesłana, zostałeś przeniesiony do artykułu")
+                this.props.history.push('/articles/' + this.props.match.params.action)
+            }
         }
+
     }
 
     handleImageUploaded = (url) => this.setState((oldState) => ({
@@ -82,19 +131,19 @@ class Editor extends React.Component {
                 <label className={styles.fileUploadLabel}>Opis obrazu:</label>
                 <input className={styles.fileUploadDescription} type="text" placeholder="Description of the image" value={this.state.form.imageDescription} onChange={(e) => this.onFormChange({ imageDescription: e.target.value })} />
 
-                <EditorSource className={styles.editor} onChange={(bodyHTML) => this.onFormChange({ bodyHTML })} />
+                <EditorSource data={this.state.form.bodyHTML} className={styles.editor} onChange={(bodyHTML) => this.onFormChange({ bodyHTML })} />
 
-                
+
 
                 <div className={styles.previewContainer}>
                     <h1 className={styles.previewContainerTitle}>Preview:</h1>
-                    <ArticlePreview load="fromProps" key={this.state.form.title}  data={{
+                    <ArticlePreview load="fromProps" key={this.state.form.title} data={{
                         title: this.state.form.title,
                         subtitle: this.state.form.subtitle,
                         image: this.state.form.imageURL,
                         imageDescription: this.state.form.imageDescription,
                         body: this.state.form.bodyHTML
-                    }}/>
+                    }} />
                 </div>
 
                 <button disabled={this.state.status === "loading"} className={styles.submitButton} onClick={this.submitArticle}>Submit</button>

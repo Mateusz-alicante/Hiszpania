@@ -42,7 +42,7 @@ const Router = (props) => (
         <Route path="/user/login" exact component={Login} />
         <Route path="/user/new" exact component={CreateUser} />
         <Route path="/user/dashboard" exact component={Dashboard} />
-        <Route path="/user/newArticle" exact component={CreateArticle} />
+        <Route path="/user/newArticle/:action" exact component={CreateArticle} />
         <Route path="/user/newFair" exact component={CreateFair} />
         <Route path="/user/pages" component={Pages} />
     </div>

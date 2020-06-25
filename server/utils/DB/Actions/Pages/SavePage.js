@@ -1,4 +1,5 @@
-const Page = require('../../Schemas/Pages')
+const Page = require('../../Schemas/Pages');
+const { date } = require('joi');
 
 const savePage = async (req, res) => {
     const { title, body } = req.body
@@ -21,10 +22,10 @@ const savePage = async (req, res) => {
             id: page.id,
             url: page.url
         })
-    
+
     } catch (error) {
         return res.status(422).send("Article data is does not pass the validation.      " + error)
-        
+
     }
 
 }
@@ -34,7 +35,7 @@ const deletePage = async (req, res) => {
 
     try {
 
-        const page = await Page.deleteOne({_id: id})
+        const page = await Page.deleteOne({ _id: id })
 
         if (page.n == 1) {
             return res.status(200).send({
@@ -46,14 +47,41 @@ const deletePage = async (req, res) => {
             })
         }
 
-        
-    
+
+
     } catch (error) {
         console.log(error)
         return res.status(422).send("An error occured while trying to delete the page.      " + error)
-        
+
     }
 
 }
 
-module.exports = {savePage, deletePage}
+const updatePage = async (req, res) => {
+    const { id, title, body } = req.body
+
+    try {
+
+        const page = await Page.findOneAndUpdate({ _id: id })
+
+        page.title = title
+        page.body = body
+        page.createdAt = Date.now()
+
+
+        page.save()
+
+        return res.status(201).send({
+            message: "Page has been updated correctely",
+            url: page.url
+        })
+
+    } catch (error) {
+        console.log(error)
+        return res.status(422).send("An error occured while trying to delete the page.      " + error)
+
+    }
+
+}
+
+module.exports = { savePage, deletePage, updatePage }
