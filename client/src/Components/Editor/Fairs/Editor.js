@@ -52,24 +52,46 @@ class Editor extends React.Component {
     submitFair = async () => {
         this.setState({ status: 'loading' })
         const data = this.state.form
-        const response = await axios.post('/api/content/saveFair', {
-            ...data,
-            startDate: data.startDate.toDate(),
-            endDate: data.endDate.toDate()
-        }, {
-            headers: {
-                authorization: this.props.redux.auth.token
-            }
-        })
-            .catch((e) => {
-                this.setState({ status: `Error: ${e.response.data}` })
-                toast.error(`Wystąpił błąd podczas przesyłania artykułu. ${e.response.data} `)
-            })
 
-        if (response && response.status === 201) {
-            toast.success("Artykuł został domyślnie przesłany, zostałeś przeniesiony do strony artykułu")
-            this.props.history.push(`/fairs/${response.data.id}`)
-        }
+        if (this.props.match.params.action == 'new') {
+            const response = await axios.post('/api/content/saveFair', {
+                ...data,
+                startDate: data.startDate.toDate(),
+                endDate: data.endDate.toDate()
+            }, {
+                headers: {
+                    authorization: this.props.redux.auth.token
+                }
+            })
+                .catch((e) => {
+                    this.setState({ status: `Error: ${e.response.data}` })
+                    toast.error(`Wystąpił błąd podczas przesyłania artykułu. ${e.response.data} `)
+                })
+    
+            if (response && response.status === 201) {
+                toast.success("Artykuł został domyślnie przesłany, zostałeś przeniesiony do strony artykułu")
+                this.props.history.push(`/fairs/${response.data.id}`)
+            }
+        } else {
+            const response = await axios.post('/api/content/updateFair', {
+                ...data,
+                id: this.props.match.params.action
+            }, {
+                headers: {
+                    authorization: this.props.redux.auth.token
+                }
+            })
+                .catch((e) => {
+                    this.setState({ status: `Error: ${e.response.data}` })
+                    toast.error(`Wystąpił błąd podczas przesyłania artykułu. ${e.response.data} `)
+                })
+
+            if (response && response.status === 201) {
+                console.log(response)
+                toast.success("Strona została domyślnie przesłana, zostałeś przeniesiony do artykułu")
+                this.props.history.push('/fairs/' + this.props.match.params.action)
+            }
+        }  
     }
 
     handleImageUploaded = (url) => this.setState((oldState) => ({
@@ -91,13 +113,44 @@ class Editor extends React.Component {
         }))
     }
 
+    componentDidMount() {
+        if (this.props.match.params.action != 'new') {
+            this.fetchArticleData()
+        }
+    }
+
+    fetchArticleData = async (id) => {
+        const response = await axios.get('/api/content//loadSingleFair?id=' + this.props.match.params.action)
+            .catch((e) => toast.error(`Wystąpił błąd podczas ładowania targów. ${e} `))
+
+
+        if (response.status == 200) {
+            const data = response.data
+
+            console.log(data)
+            this.setState({
+                form: {
+                    title: data.title,
+                    subtitle: data.subtitle,
+                    bodyHTML: data.body,
+                    imageURL: data.image,
+                    imageDescription: data.imageDescription,
+                    location: data.location,
+                    startDate: moment(data.startDate),
+                    endDate: moment(data.endDate),
+                    category: data.category
+                }
+            })
+        }
+    }
+
 
 
     render() {
         const formData = this.state.form
         return (
             <div>
-                <h1 className={styles.topTitle}>Nowy artykuł:</h1>
+                <h1 className={styles.topTitle}>Nowe targi:</h1>
 
 
                 <form className={styles.form1}>
@@ -130,7 +183,7 @@ class Editor extends React.Component {
                 <label className={styles.fileUploadLabel}>Opis obrazu:</label>
                 <input className={styles.fileUploadDescription} type="text" placeholder="Description of the image" value={formData.imageDescription} onChange={(e) => this.onFormChange({ imageDescription: e.target.value })} />
 
-                <EditorSource className={styles.editor} onChange={(bodyHTML) => this.onFormChange({ bodyHTML })} />
+                <EditorSource data={this.state.form.bodyHTML} className={styles.editor} onChange={(bodyHTML) => this.onFormChange({ bodyHTML })} />
 
 
 

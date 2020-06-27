@@ -56,3 +56,39 @@
     width: 100%;
     display: inline-block;
 }
+
+.buttonContianer {
+    padding: 1em;
+    margin-bottom: 4em;
+}
+
+.buttonContianer button {
+    padding: 1em;
+    margin: 1em;
+}
+
+.editButton {
+    color: white;
+    background-color: rgb(43, 43, 255);
+    border: 3px solid rgb(104, 104, 255);
+    border-radius: 1em;
+    cursor: pointer;
+    float: left;
+}
+
+.editButton:hover {
+    background-color: rgb(87, 87, 255);
+}
+
+.deleteButton {
+    color: white;
+    background-color: rgb(255, 50, 50);
+    border: 3px solid rgb(255, 91, 91);
+    border-radius: 1em;
+    cursor: pointer;
+    float: right;
+}
+
+.deleteButton:hover {
+    background-color: rgb(255, 91, 91);
+}

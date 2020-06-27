@@ -8,9 +8,12 @@ import { connect } from 'react-redux'
 // confirmation alert
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+
 import axios from 'axios'
 import { withRouter } from 'react-router-dom'
 import { toast } from 'react-toastify'
+
+import {setRender} from '../../../Utils/Redux/Actions/Render'
 
 class SimpleArticle extends React.Component {
 
@@ -42,7 +45,7 @@ class SimpleArticle extends React.Component {
         
         if (response && response.status == 200) {
             toast.success(`Artykuł został domyślnie skasowany`)
-            this.props.history.push('/user')
+            this.props.dispatch(setRender('front', true))
         }
     }
 

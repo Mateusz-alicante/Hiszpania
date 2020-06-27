@@ -13,10 +13,16 @@
 .NavLink {
     color: black;
     text-decoration: none;
-    margin: 3%;
+    margin: 1em;
+    margin-bottom: 0em;
     padding: 1%;
     padding-top: 0;
     vertical-align: top;
+    display: inline-block;
+    margin-bottom: 0.2em;
+    font-size: 200%;
+    vertical-align: top;
+    margin-top: 0.5em;
 }
 
 .NavContainer {
@@ -24,14 +30,14 @@
     text-align: left;
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 2;
     background-color: whitesmoke;
 
     white-space: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
 
-    height: 5em;
+    height: 6em;
 }
 
 .NavContainer > div {
@@ -44,14 +50,6 @@
     overflow-y: hidden;
     width: 90%;
     
-}
-
-.NavLink {
-    display: inline-block;
-    margin-bottom: 1em;
-    font-size: 200%;
-    vertical-align: top;
-    margin-top: 0.5em;
 }
 
 .iconcontainer {
@@ -117,14 +115,28 @@
     }
 
     .Header {
-        padding-bottom: 5%;
+        padding-bottom: 5em;
         display: inline;
     }
 
     .NavContainer {
-        padding-top: 2em;
-        padding-bottom: 2em;
+        padding-top: 0.5em;
+        padding-bottom: 5em;
     }
+
+    .NavLink {
+        margin-top: 0;
+    }
+
+    .imageLink {
+        margin-right: 2em;
+    }
+
+    .overflowNav {
+        width: 80%;
+        
+    }
+    
 
 }
 

@@ -31,9 +31,9 @@ class Single extends React.Component {
 
     fetchFair = async () => {
         const response = await axios.get('/api/content/loadSingleFair', {
-            params: {id: this.props.match.params.id}
+            params: { id: this.props.match.params.id }
         })
-        .catch((e) => console.log(e))
+            .catch((e) => console.log(e))
 
         console.log(response)
         this.setState((state) => ({
@@ -50,9 +50,11 @@ class Single extends React.Component {
             fair = this.props.data
         } else {
             fair = this.state.fairInfo
-        } 
+        }
         return (
             <div className={styles.mainContainer}>
+
+
                 <div className={styles.imageContainer} >
                     <img className={styles.image} src={fair.image} />
                     <p className={styles.imageDescription}>{fair.imageDescription}</p>
@@ -62,16 +64,17 @@ class Single extends React.Component {
                     <h3 className={styles.subTitle}>{fair.subtitle}</h3>
                 </div>
                 <div className={styles.dates}>
-                <h3><span className={styles.dateLabelSpan}>Kategoria targów: </span><span className={styles.dateSpan}>{fair.category}</span></h3>
+                    <h3><span className={styles.dateLabelSpan}>Kategoria targów: </span><span className={styles.dateSpan}>{fair.category}</span></h3>
                     <h3><span className={styles.dateLabelSpan}>Data rozpoczęcia targów: </span><span className={styles.dateSpan}>{moment(fair.startDate).locale('pl').format('Do dddd MMMM YYYY')}</span></h3>
                     <h3><span className={styles.dateLabelSpan}>Data zakończenia targów: </span><span className={styles.dateSpan}>{moment(fair.endDate).locale('pl').format('Do dddd MMMM YYYY')}</span></h3>
                     <h3><span className={styles.dateLabelSpan}>Położenie targów: </span><span className={styles.dateSpan}>{fair.location}</span></h3>
                 </div>
                 <div className={styles.bodyContainer}>
-                    <div className="ck-content" dangerouslySetInnerHTML={{__html: fair.body}} />
+                    <div className="ck-content" dangerouslySetInnerHTML={{ __html: fair.body }} />
                 </div>
             </div>
         )
-}}
+    }
+}
 
 export default Single

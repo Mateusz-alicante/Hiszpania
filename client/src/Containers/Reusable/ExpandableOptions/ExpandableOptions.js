@@ -57,6 +57,7 @@ class ExpandableOptions extends React.Component {
                                 focusedInput={this.state.dateSelectorFocused}
                                 onFocusChange={focusedInput => this.setState({ dateSelectorFocused: focusedInput })}
                                 isOutsideRange={() => false}
+                                numberOfMonths={1}
                             />
                         </div>
                     </div>

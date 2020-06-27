@@ -4,7 +4,7 @@ var router = express.Router()
 const { nonAdminAuth, AdminAuth } = require('../../DB/Middleware/Auth')
 
 const {saveArticle, removeArticle, updateArticle} = require('../../DB/Actions/Articles/SaveArticle')
-const saveFair = require('../../DB/Actions/Fairs/SaveFair')
+const {saveFair, removeFair, updateFair} = require('../../DB/Actions/Fairs/SaveFair')
 const { savePage, deletePage, updatePage} = require('../../DB/Actions/Pages/SavePage')
 const { loadArticles, loadSingleArticle } = require('../../DB/Actions/Articles/LoadArticles')
 const { loadFairs, loadSingleFair } = require('../../DB/Actions/Fairs/LoadFairs')
@@ -21,6 +21,8 @@ router.get('/deleteArticle/:id', AdminAuth, removeArticle)
 router.post('/updateArticle', AdminAuth, updateArticle)
 
 router.post('/saveFair', AdminAuth, saveFair)
+router.get('/deleteFair/:id', AdminAuth, removeFair)
+router.post('/updateFair', AdminAuth, updateFair)
 
 router.post('/savePage', AdminAuth ,savePage)
 

@@ -7,6 +7,8 @@ import { toast } from 'react-toastify'
 import EditorSource from '../../../Reusable/EditorConfig/EditorSource'
 import styles from './Editor.module.css'
 
+import {setRender} from '../../../../Components/Utils/Redux/Actions/Render'
+
 class Editor extends React.Component {
 
     state = {
@@ -57,6 +59,7 @@ class Editor extends React.Component {
             if (response && response.status === 201) {
                 toast.success("Strona została domyślnie przesłana, zostałeś przeniesiony do strony")
                 this.props.history.push('/customPage/' + response.data.url)
+                this.props.dispatch(setRender('header', true))
             }
         } else {
             const response = await axios.post('/api/content/updatePage', {
@@ -76,6 +79,7 @@ class Editor extends React.Component {
             if (response && response.status === 201) {
                 toast.success("Strona została domyślnie przesłana, zostałeś przeniesiony do strony")
                 this.props.history.push('/customPage/' + response.data.url)
+                this.props.dispatch(setRender('header', true))
             }
         }
     }

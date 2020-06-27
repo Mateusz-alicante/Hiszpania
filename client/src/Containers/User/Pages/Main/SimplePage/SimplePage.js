@@ -12,6 +12,8 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
+import { setRender } from '../../../../../Components/Utils/Redux/Actions/Render'
+
 class SimplePage extends React.Component {
 
     alertDelete = () => {
@@ -44,6 +46,8 @@ class SimplePage extends React.Component {
             toast.success(`Strona została domyślnie skasowana`)
             this.props.rerender()
         }
+
+        this.props.dispatch(setRender('header', true))
       
     }
 

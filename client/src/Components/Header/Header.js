@@ -7,6 +7,9 @@ import image from './logo.svg'
 import userIcon from './user.svg'
 import Axios from 'axios'
 
+import {connect} from 'react-redux'
+import { setRender } from '../Utils/Redux/Actions/Render'
+
 class Header extends React.Component {
     state = {
         customLinks: []
@@ -20,6 +23,14 @@ class Header extends React.Component {
         const response = await Axios.get('/api/content/loadPagesUrls')
 
         this.setState((oldState) => ({ customLinks: [...oldState.customLinks, ...response.data] }))
+    }
+
+    componentDidUpdate() {
+        if (this.props.redux.render.header) {
+            this.setState({customLinks: []})
+            this.fethUrls()
+            this.props.dispatch(setRender('header', false))
+        }
     }
 
     render() {
@@ -53,4 +64,8 @@ class Header extends React.Component {
     }
 }
 
-export default Header
+const mapStateToProps = (state) => ({
+    redux: state
+})
+
+export default connect(mapStateToProps)(Header)

@@ -7,7 +7,7 @@ const ID = process.env.AWS_ID;
 const SECRET = process.env.AWS_SECRET;
 
 // The name of the bucket that you have created
-const BUCKET_NAME = 'testckeditorupload';
+const BUCKET_NAME = process.env.BUCKET_NAME;
 
 const s3 = new AWS.S3({
     accessKeyId: ID,
