@@ -35,13 +35,15 @@
     "react-dom": "^16.13.1",
     "react-expand-animated": "^1.0.2",
     "react-infinite-scroll-component": "^5.0.5",
+    "react-infinite-scroller": "^1.2.4",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1",
+    "react-scripts": "^4.0.0",
     "react-toastify": "^6.0.5",
     "redux": "^4.0.5",
     "style-loader": "^1.2.1",
-    "tough-cookie": "^4.0.0"
+    "tough-cookie": "^4.0.0",
+    "validator": "^13.1.17"
   },
   "scripts": {
     "start": "craco start",

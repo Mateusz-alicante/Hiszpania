@@ -2,15 +2,11 @@ import React from 'react'
 import axios from 'axios'
 
 import { connect } from 'react-redux'
-import Loader from 'react-infinite-scroll-component'
+import Loader from 'react-infinite-scroller'
 import Spinner from '../Spinner/Spinner'
 
 import styles from './Loader.module.css'
 import { setRender } from '../../../Components/Utils/Redux/Actions/Render'
-
-function timeout(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
 
 class Front extends React.Component {
     state = {
@@ -44,12 +40,7 @@ class Front extends React.Component {
     }
 
     next = async () => {
-        await timeout(100)
         await this.loadArticles()
-    }
-
-    componentDidMount() {
-        this.loadArticles()
     }
 
     checkUpdates = async () => {
@@ -74,8 +65,8 @@ class Front extends React.Component {
         return(
             <div>  
                 <Loader
-                dataLength={this.state.loadedArticles.length}
-                next={this.loadArticles}
+                pageStart={0}
+                loadMore={this.loadArticles}
                 hasMore={this.state.hasMore}
                 loader={<Spinner />}
                 >
