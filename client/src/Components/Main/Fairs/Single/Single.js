@@ -67,7 +67,7 @@ class Single extends React.Component {
                     <h3><span className={styles.dateLabelSpan}>Kategoria targów: </span><span className={styles.dateSpan}>{fair.category}</span></h3>
                     <h3><span className={styles.dateLabelSpan}>Data rozpoczęcia targów: </span><span className={styles.dateSpan}>{moment(fair.startDate).locale('pl').format('Do dddd MMMM YYYY')}</span></h3>
                     <h3><span className={styles.dateLabelSpan}>Data zakończenia targów: </span><span className={styles.dateSpan}>{moment(fair.endDate).locale('pl').format('Do dddd MMMM YYYY')}</span></h3>
-                    <h3><span className={styles.dateLabelSpan}>Położenie targów: </span><span className={styles.dateSpan}>{fair.location}</span></h3>
+                    <h3><span className={styles.dateLabelSpan}>Miejsce targów: </span><span className={styles.dateSpan}>{fair.location}</span></h3>
                 </div>
                 <div className={styles.bodyContainer}>
                     <div className="ck-content" dangerouslySetInnerHTML={{ __html: fair.body }} />

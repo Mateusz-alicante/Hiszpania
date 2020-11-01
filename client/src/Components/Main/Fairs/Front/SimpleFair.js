@@ -76,7 +76,7 @@ class SimpleArticle extends React.Component {
                             <div className={styles.bottomGrid}>
                                 <p className={styles.category}><span className={styles.innerLabel}>Kategoria:</span>{fair.category}</p>
                                 <p className={styles.date}><span className={styles.innerLabel}>Daty:</span> {moment(fair.startDate).locale('pl').format("D/MM/YYYY")} -- {moment(fair.endDate).locale('pl').format("D/MM/YYYY")}</p>
-                                <p className={styles.location}><span className={styles.innerLabel}>Położenie:</span> {fair.location}</p>
+                                <p className={styles.location}><span className={styles.innerLabel}>Miejsce:</span> {fair.location}</p>
                             </div>
                         </div>
                     </div>
